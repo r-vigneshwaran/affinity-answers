@@ -1,0 +1,27 @@
+.content {
+  overflow: visible;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  .right-pane {
+    min-height: calc(100vh - 60px);
+    padding: 0 1 * $spacer;
+    padding-bottom: 1 * $spacer;
+  }
+  @include transition(all 0.3s);
+  width: 100%;
+  height: 100%;
+}
+
+body,
+html,
+#root {
+  width: 100%;
+  height: 200vh;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content {
+  background: #000;
+}

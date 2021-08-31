@@ -1,5 +1,21 @@
+// variables
+@import './variables';
+
+// mixins
+@import './mixins/animations';
+@import './mixins/background-variant';
+@import './mixins/transform';
+@import './mixins/utilities';
+
+// animations
+@import './animations';
+
+// reboot
+@import './reboot';
+
 // components
 @import './component/header';
+@import './component/preloader';
 
 // screens
 @import './pages/landing';
