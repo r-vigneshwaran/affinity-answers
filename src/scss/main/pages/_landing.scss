@@ -8,9 +8,10 @@
   }
   @include transition(all 0.3s);
   width: 100%;
-  height: 100%;
 }
-
+.main-content-area {
+  width: 1200px;
+}
 body,
 html,
 #root {
@@ -20,8 +21,23 @@ html,
   padding: 0px;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  background: #000;
 }
 
 .content {
   background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  position: relative;
+  width: auto;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 20px;
+  // @media screen and (max-width: 1240px) {
+  //   grid-template-columns: repeat(3, minmax(250px, 1fr));
+  // }
 }

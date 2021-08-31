@@ -13,9 +13,14 @@
 // reboot
 @import './reboot';
 
+// utilites
+@import './utilities/positions';
+
 // components
 @import './component/header';
 @import './component/preloader';
+@import './component/card';
+@import './component/sidebar';
 
 // screens
 @import './pages/landing';

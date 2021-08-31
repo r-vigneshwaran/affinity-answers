@@ -1,9 +1,7 @@
-import { BaseLayout, Header } from 'components';
+import { BaseLayout } from 'components';
 import Landing from 'pages/Landing';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
-import { Routes } from 'routes';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (

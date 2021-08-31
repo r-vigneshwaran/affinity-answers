@@ -5,7 +5,9 @@
 
 import { combineReducers } from 'redux';
 import app from './app';
+import products from './products';
 
 export default combineReducers({
-  app
+  app,
+  products
 });
