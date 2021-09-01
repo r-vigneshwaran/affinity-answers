@@ -8,9 +8,15 @@
   }
   @include transition(all 0.3s);
   width: 100%;
+  &.active {
+    margin-left: 130px;
+  }
 }
 .main-content-area {
   width: 1200px;
+}
+body {
+  overflow-x: hidden;
 }
 body,
 html,

@@ -9,7 +9,7 @@
  */
 
 import { actionTypes } from '../constants';
-const { SET_USER_DATA } = actionTypes;
+const { SET_USER_DATA, SET_LOADER } = actionTypes;
 
 const initialState = {
   userInfo: null,
@@ -19,6 +19,8 @@ export default function app(state = initialState, { type, payload }) {
   switch (type) {
     case SET_USER_DATA:
       return { ...state, userInfo: payload };
+    case SET_LOADER:
+      return { ...state, loader: payload };
     default:
       return state;
   }

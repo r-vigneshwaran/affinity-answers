@@ -22,6 +22,7 @@ const Landing = () => {
         {products.length > 0 &&
           products.map((item) => (
             <Card
+              key={item.id}
               title={item.title}
               price={item.price}
               imgSource={item.image}

@@ -1,12 +1,15 @@
 import React from 'react';
 
-const Header = ({ scrolled }) => {
+const Header = ({ scrolled, handleClickMenu }) => {
   return (
     <React.Fragment>
       <header className={`${scrolled ? 'stick' : ''}`}>
-        <a href="/" className="logo" alt="logo">
-          LOGO
-        </a>
+        <div className="left">
+          <i class="bx bx-menu btn bx-md" onClick={handleClickMenu}></i>
+          <a href="/" className="logo" alt="logo">
+            LOGO
+          </a>
+        </div>
         <ul>
           <li>
             <a href="/cart" alt="cart">

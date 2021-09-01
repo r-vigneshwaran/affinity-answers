@@ -8,20 +8,12 @@ import React from 'react';
 
 const Preloader = function (props) {
   const { show } = props;
-
+  console.log(show, 'loader');
   return (
-    <div
-      className={`preloader bg-loader flex-column justify-content-center align-items-center ${
-        show ? '' : 'show'
-      }`}
-    >
-      {/* <img
-        className="loader-element animate__animated animate__jackInTheBox"
-        src={MangoLoader}
-        height={40}
-        alt="loader..."
-      /> */}
-    </div>
+    <React.Fragment>
+      <div className={` ${show ? 'loader' : ''}`} />
+      <div className={show ? 'bg-loader' : ''} />
+    </React.Fragment>
   );
 };
 export default Preloader;
