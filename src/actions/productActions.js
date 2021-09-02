@@ -1,8 +1,14 @@
 import axios from 'axios';
 import { actionTypes } from '../constants';
 
-const { SET_PRODUCTS_LIST, SET_LOADER, SET_PRODUCT, SET_CATEGORIES } =
-  actionTypes;
+const {
+  SET_PRODUCTS_LIST,
+  SET_LOADER,
+  SET_PRODUCT,
+  SET_CATEGORIES,
+  SET_CART_COUNT,
+  SET_ITEM_CART
+} = actionTypes;
 
 export const getProductsList = () => async (dispatch) => {
   dispatch({ type: SET_LOADER, payload: true });
@@ -38,9 +44,29 @@ export const getCategories = () => async (dispatch) => {
     .get('https://fakestoreapi.com/products/categories')
     .then((response) => {
       dispatch({ type: SET_CATEGORIES, payload: response.data });
+      dispatch({ type: SET_LOADER, payload: false });
     })
     .catch((err) => {
       console.log(err);
+      dispatch({ type: SET_LOADER, payload: false });
     });
-  dispatch({ type: SET_LOADER, payload: false });
+};
+export const addToCart = (item, count) => async (dispatch) => {
+  dispatch({ type: SET_CART_COUNT, payload: count });
+  dispatch({ type: SET_ITEM_CART, payload: item });
+};
+
+export const getProductsBasedOnCategories = (category) => async (dispatch) => {
+  dispatch({ type: SET_LOADER, payload: true });
+  category &&
+    axios
+      .get(`https://fakestoreapi.com/products/category/${category}`)
+      .then((response) => {
+        dispatch({ type: SET_PRODUCTS_LIST, payload: response.data });
+        dispatch({ type: SET_LOADER, payload: false });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({ type: SET_LOADER, payload: false });
+      });
 };

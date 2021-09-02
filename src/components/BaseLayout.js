@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Preloader } from 'components';
+import { Navbar, Preloader, Sidebar, Footer } from 'components';
 import { useSelector } from 'react-redux';
-import Sidebar from './Sidebar';
 
-const BaseLayout = ({ Component }) => {
+const BaseLayout = ({ Component, banner, isShowSidebar }) => {
   const showLoader = useSelector((state) => state.app.loader);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
     if (showLoader) {
@@ -16,11 +16,10 @@ const BaseLayout = ({ Component }) => {
       document.body.style.overflowY = 'unset';
     }
   }, [showLoader]);
-  
+
   useEffect(() => {
-    const banner = document.querySelector('.banner');
     window.onscroll = () => {
-      if (window.pageYOffset > banner.clientHeight) {
+      if (window.pageYOffset > 0) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -36,10 +35,22 @@ const BaseLayout = ({ Component }) => {
   return (
     <>
       <Preloader show={showLoader} />
-      <Navbar scrolled={scrolled} handleClickMenu={handleClickMenu} />
-      <Sidebar scrolled={scrolled} active={active} setActive={setActive} />
+      <Navbar
+        banner={banner}
+        scrolled={scrolled}
+        handleClickMenu={handleClickMenu}
+        isShowSidebar={isShowSidebar}
+      />
+      {isShowSidebar && (
+        <Sidebar
+          setSelectedCategory={setSelectedCategory}
+          scrolled={scrolled}
+          active={active}
+          setActive={setActive}
+        />
+      )}
       <main className={`content ${active ? 'active' : ''}`}>
-        <Component />
+        <Component selectedCategory={selectedCategory} />
       </main>
     </>
   );

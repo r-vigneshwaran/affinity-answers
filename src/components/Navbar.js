@@ -1,30 +1,38 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-const Header = ({ scrolled, handleClickMenu }) => {
+const Header = ({ scrolled, handleClickMenu, banner, isShowSidebar }) => {
+  const count = useSelector((state) => state.products.count);
   return (
     <React.Fragment>
       <header className={`${scrolled ? 'stick' : ''}`}>
         <div className="left">
-          <i class="bx bx-menu btn bx-md" onClick={handleClickMenu}></i>
-          <a href="/" className="logo" alt="logo">
-            LOGO
-          </a>
+          {isShowSidebar && scrolled && (
+            <i
+              className="bx bx-menu text-black btn bx-md"
+              onClick={handleClickMenu}
+            ></i>
+          )}
+          <Link to="/" className="logo">
+            <i class="bx bx-shopping-bag"></i> LOGO
+          </Link>
         </div>
         <ul>
-          <li>
-            <a href="/cart" alt="cart">
-              Cart
-            </a>{' '}
+          <li className={`cart ${scrolled ? 'primary' : ''}`}>
+            <span className="count">{count}</span>
+            <Link to="/cart" className="logo">
+              <i className="bx bx-cart"></i>
+            </Link>
           </li>
           <li>
-            {' '}
-            <a href="/user" alt="cart">
-              username
-            </a>{' '}
+            <Link to="/product" className="logo">
+              <i className="bx bx-user"></i>
+            </Link>
           </li>
         </ul>
       </header>
-      <section className="banner"></section>
+      {banner && <section className="banner"></section>}
     </React.Fragment>
   );
 };

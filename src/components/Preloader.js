@@ -8,7 +8,6 @@ import React from 'react';
 
 const Preloader = function (props) {
   const { show } = props;
-  console.log(show, 'loader');
   return (
     <React.Fragment>
       <div className={` ${show ? 'loader' : ''}`} />

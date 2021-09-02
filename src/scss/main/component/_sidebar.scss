@@ -16,6 +16,46 @@
   padding: 6px 14px;
   z-index: 99;
   transition: all 0.5s ease;
+
+  ul {
+    li {
+      .icon {
+        span {
+          text-transform: capitalize;
+        }
+      }
+      .tool-tip {
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        height: 35px;
+        width: 122px;
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        transform: translateY(-50%);
+        color: black;
+        border-radius: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 35px;
+        transition: 0s;
+        white-space: nowrap;
+        width: auto;
+        margin: 2px 15px;
+        padding: 2px 15px;
+        opacity: 0;
+        text-transform: capitalize;
+      }
+      &:hover {
+        .tool-tip {
+          opacity: 1;
+          left: 60px;
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
 }
 .left {
   width: 180px;
@@ -77,13 +117,14 @@
 .nav_list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
+  margin-top: 65px;
 }
 .sidebar li {
   position: relative;
   margin: 8px 0;
   list-style: none;
+  @include transition(all 0.3s);
 }
 .sidebar li .tooltip {
   position: absolute;
@@ -100,6 +141,7 @@
   white-space: nowrap;
   pointer-events: none;
   transition: 0s;
+  color: red;
 }
 .sidebar li:hover .tooltip {
   opacity: 1;
@@ -152,7 +194,7 @@
   background: #fff;
   color: #11101d;
 }
-.sidebar li a {
+.sidebar li .icon {
   display: flex;
   height: 100%;
   width: 100%;
@@ -162,13 +204,13 @@
   transition: all 0.4s ease;
   background: #11101d;
 }
-.sidebar li a:hover {
+.sidebar li .icon:hover {
   background: #fff;
   span {
     color: #000;
   }
 }
-.sidebar li a .links_name {
+.sidebar li .icon .links_name {
   color: #fff;
   font-size: 15px;
   font-weight: 400;
@@ -177,12 +219,12 @@
   pointer-events: none;
   transition: 0.4s;
 }
-.sidebar.open li a .links_name {
+.sidebar.open li .icon .links_name {
   opacity: 1;
   pointer-events: auto;
 }
-.sidebar li a:hover .links_name,
-.sidebar li a:hover i {
+.sidebar li .icon:hover .links_name,
+.sidebar li .icon:hover i {
   transition: all 0.5s ease;
   color: #11101d;
 }

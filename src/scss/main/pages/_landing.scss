@@ -1,11 +1,9 @@
 .content {
   overflow: visible;
-  background: #f8f8f8 0% 0% no-repeat padding-box;
-  .right-pane {
-    min-height: calc(100vh - 60px);
-    padding: 0 1 * $spacer;
-    padding-bottom: 1 * $spacer;
-  }
+  width: 100%;
+  background: #000;
+  height: 100%;
+  margin-top: 90px;
   @include transition(all 0.3s);
   width: 100%;
   &.active {
@@ -14,6 +12,7 @@
 }
 .main-content-area {
   width: 1200px;
+  height: 100%;
 }
 body {
   overflow-x: hidden;
@@ -22,7 +21,7 @@ body,
 html,
 #root {
   width: 100%;
-  height: 200vh;
+  height: 100%;
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -30,12 +29,6 @@ html,
   background: #000;
 }
 
-.content {
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .container {
   position: relative;
   width: auto;
@@ -43,7 +36,4 @@ html,
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   padding: 20px;
-  // @media screen and (max-width: 1240px) {
-  //   grid-template-columns: repeat(3, minmax(250px, 1fr));
-  // }
 }

@@ -9,15 +9,25 @@
  */
 
 import { actionTypes } from '../constants';
-const { SET_PRODUCTS_LIST } = actionTypes;
+const { SET_PRODUCTS_LIST, SET_ITEM_CART, SET_CART_COUNT, SET_CATEGORIES } =
+  actionTypes;
 
 const initialState = {
-  productsList: null
+  productsList: null,
+  cart: null,
+  count: 0,
+  categories: null
 };
 export default function products(state = initialState, { type, payload }) {
   switch (type) {
     case SET_PRODUCTS_LIST:
       return { ...state, productsList: payload };
+    case SET_ITEM_CART:
+      return { ...state, cart: payload };
+    case SET_CART_COUNT:
+      return { ...state, count: payload };
+    case SET_CATEGORIES:
+      return { ...state, categories: payload };
     default:
       return state;
   }
