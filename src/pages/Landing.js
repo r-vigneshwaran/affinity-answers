@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getProductsList } from 'actions/productActions';
+import { getProductsList, addToCart } from 'actions';
 import Card from 'components/Card';
-import { addToCart } from 'actions/productActions';
 
 const Landing = ({ selectedCategory }) => {
   const dispatch = useDispatch();
@@ -36,7 +35,6 @@ const Landing = ({ selectedCategory }) => {
       array = [item];
       newCount = 1;
     }
-
     dispatch(addToCart(array, newCount));
   };
   return (

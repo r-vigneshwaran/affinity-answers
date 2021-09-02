@@ -6,11 +6,11 @@ import {
   faStar
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Card = ({ item, handleClickAddToCart }) => {
   const [isInCart, setIsInCart] = useState(false);
-  const cartList = useSelector((state) => state.products.cart);
+  const cartList = JSON.parse(localStorage.getItem('cart'));
   const array = new Array(5).fill(false);
   for (var i = 0; i < Math.round(item.rating.rate); i++) {
     array[i] = true;
@@ -47,7 +47,9 @@ const Card = ({ item, handleClickAddToCart }) => {
             )}
           </li>
           <li>
-            <FontAwesomeIcon icon={faEye} color="#000" />
+            <Link to={`/product/${item.id}`}>
+              <FontAwesomeIcon icon={faEye} color="#000" />
+            </Link>
             <span>Product Details</span>
           </li>
         </ul>
@@ -61,13 +63,13 @@ const Card = ({ item, handleClickAddToCart }) => {
           <div className="rating">
             {array.map((item, index) =>
               item ? (
-                <FontAwesomeIcon key={index} icon={faStar} color="#000" />
+                <FontAwesomeIcon key={index} icon={faStar} color="#ffd513" />
               ) : (
                 <FontAwesomeIcon
                   key={index}
                   className="grey"
                   icon={faStar}
-                  color="#000"
+                  color="#ccc"
                 />
               )
             )}

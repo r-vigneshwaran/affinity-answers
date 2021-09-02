@@ -9,14 +9,20 @@
  */
 
 import { actionTypes } from '../constants';
-const { SET_PRODUCTS_LIST, SET_ITEM_CART, SET_CART_COUNT, SET_CATEGORIES } =
-  actionTypes;
+const {
+  SET_PRODUCTS_LIST,
+  SET_ITEM_CART,
+  SET_CART_COUNT,
+  SET_CATEGORIES,
+  SET_USER_DATA
+} = actionTypes;
 
 const initialState = {
   productsList: null,
   cart: null,
   count: 0,
-  categories: null
+  categories: null,
+  userData: null
 };
 export default function products(state = initialState, { type, payload }) {
   switch (type) {
@@ -28,6 +34,8 @@ export default function products(state = initialState, { type, payload }) {
       return { ...state, count: payload };
     case SET_CATEGORIES:
       return { ...state, categories: payload };
+    case SET_USER_DATA:
+      return { ...state, userData: payload };
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar, Preloader, Sidebar, Footer } from 'components';
+import { Navbar, Preloader, Sidebar } from 'components';
 import { useSelector } from 'react-redux';
 
 const BaseLayout = ({ Component, banner, isShowSidebar }) => {
@@ -9,12 +9,12 @@ const BaseLayout = ({ Component, banner, isShowSidebar }) => {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    if (showLoader) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflowX = 'hidden';
-      document.body.style.overflowY = 'unset';
-    }
+    // if (showLoader) {
+    //   document.body.style.overflow = 'hidden';
+    // } else {
+    //   document.body.style.overflowX = 'hidden';
+    //   document.body.style.overflowY = 'unset';
+    // }
   }, [showLoader]);
 
   useEffect(() => {

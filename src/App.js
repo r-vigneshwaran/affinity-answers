@@ -27,7 +27,13 @@ function App() {
           <BaseLayout isShowSidebar={false} {...props} Component={Checkout} />
         )}
       />
-      <Route exact path="/product" component={Product} />
+      <Route
+        exact
+        path="/product/:id"
+        render={(props) => (
+          <BaseLayout isShowSidebar={false} {...props} Component={Product} />
+        )}
+      />
     </Switch>
   );
 }

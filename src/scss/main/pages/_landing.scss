@@ -15,7 +15,10 @@
   height: 100%;
 }
 body {
-  overflow-x: hidden;
+  // overflow-x: hidden;
+}
+#root {
+  // overflow-x: scroll;
 }
 body,
 html,
@@ -27,6 +30,7 @@ html,
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   background: #000;
+  // overflow-x: scroll;
 }
 
 .container {

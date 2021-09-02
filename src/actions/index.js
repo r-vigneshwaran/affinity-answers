@@ -7,8 +7,11 @@ const {
   SET_PRODUCT,
   SET_CATEGORIES,
   SET_CART_COUNT,
-  SET_ITEM_CART
+  SET_ITEM_CART,
+  SET_USER_DATA
 } = actionTypes;
+
+export const setLoader = (payload) => ({ type: SET_LOADER, payload });
 
 export const getProductsList = () => async (dispatch) => {
   dispatch({ type: SET_LOADER, payload: true });
@@ -70,3 +73,25 @@ export const getProductsBasedOnCategories = (category) => async (dispatch) => {
         dispatch({ type: SET_LOADER, payload: false });
       });
 };
+
+export const requestCheckoutURL = (data) => async (dispatch) => {
+  dispatch({ type: SET_LOADER, payload: true });
+  const url = `${process.env.REACT_APP_SERVER_URL}/create-checkout-session`;
+  const headers = {
+    'Content-Type': 'application/json'
+  };
+  axios
+    .post(url, JSON.stringify(data), {
+      headers: headers
+    })
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: SET_LOADER, payload: false });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: SET_LOADER, payload: false });
+    });
+};
+
+export const setUserData = (payload) => ({ type: SET_USER_DATA, payload });
